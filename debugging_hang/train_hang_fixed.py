@@ -14,7 +14,7 @@ import ray
 import ray.data as rd
 from ray import train
 from ray.train import Checkpoint, RunConfig, ScalingConfig
-from ray.train.torch import TorchConfig, TorchTrainer
+from ray.train.torch import TorchConfig, TorchTrainer, get_device
 
 
 # ----------------------------
@@ -113,7 +113,7 @@ def train_loop_per_worker(config: dict):
 
     torch.manual_seed(config["seed"] + world_rank)
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = get_device()
 
     model = SmallResNet(config["num_classes"]).to(device)
     model = train.torch.prepare_model(model)  # DDP wrap
