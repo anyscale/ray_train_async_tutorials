@@ -1,0 +1,11 @@
+# Dependencies for ray_train_new_features_final_draft.ipynb
+#
+# Tested on the Anyscale image `anyscale/ray:2.60.0-py311-cu128`
+# (Ray 2.60.0, Python 3.11) with 3 GPU worker nodes.
+#
+# Ray, pandas, NumPy, and Matplotlib come from the base image.
+# On an Anyscale workspace, a plain `pip install -r requirements.txt`
+# also registers these packages on every node in the cluster.
+
+torch==2.15.0
+torchvision==0.29.2
